@@ -98,13 +98,13 @@ resource "aws_iam_role_policy_attachment" "basic-exec-role" {
 
 # AWS Lambda function
 resource "aws_lambda_function" "scheduler_lambda" {
-    filename = "${path.module}/package/aws-scheduler.zip"
+	s3_bucket = "maz-infra"
+	s3_key = "terraform/aws-scheduler.zip"
     function_name = "aws-scheduler"
     role = "${aws_iam_role.scheduler_lambda.arn}"
     handler = "aws-scheduler.handler"
     runtime = "python2.7"
     timeout = 300
-    source_code_hash = "${base64sha256(file("${path.module}/package/aws-scheduler.zip"))}"
     vpc_config = {
       security_group_ids = "${var.security_group_ids}"
       subnet_ids = "${var.subnet_ids}"
