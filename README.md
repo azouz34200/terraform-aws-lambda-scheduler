@@ -90,9 +90,5 @@ Whether to do scheduling for RDS instances. default = "true",
 
 Default is gmt. local time is for the AWS region.
 
-### security_group_ids
-list of the vpc security groups to run lambda scheduler in. Defaults to []. Usually this does not need to be specified.
 
-### subnet_ids
-list of subnet_ids that the scheduler runs in. Defaults to []. Usually this does not need to be specified.
 
